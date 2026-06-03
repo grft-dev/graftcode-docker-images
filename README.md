@@ -11,7 +11,7 @@ This repository provides source Dockerfiles for official Docker Hub images that 
 | Image | Base image | Docker Hub repository | Tags |
 |---|---|---|---|
 | Java | `eclipse-temurin:21-jdk` | `graftcode/eclipse-temurin` | `21-jdk`, `latest` |
-| .NET | `mcr.microsoft.com/dotnet/sdk:10.0` | `graftcode/netcore` | `latest`, `10.0` |
+| .NET | `mcr.microsoft.com/dotnet/sdk:10.0` | `graftcode/netcore` | `10.0`, `latest` |
 | Node.js | `node:22` | `graftcode/node` | `22`, `latest` |
 | Python | `python:3.12-slim` | `graftcode/python` | `3.12`, `latest` |
 
