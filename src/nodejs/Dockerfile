@@ -1,7 +1,7 @@
 FROM node:22
 
-LABEL org.opencontainers.image.title="GraftCode Gateway Node.js"
-LABEL org.opencontainers.image.description="Node.js 22 image with GraftCode Gateway preinstalled"
+LABEL org.opencontainers.image.title="Graftcode Gateway Node.js"
+LABEL org.opencontainers.image.description="Node.js 22 image with Graftcode Gateway preinstalled"
 LABEL org.opencontainers.image.source="https://github.com/grft-dev/graftcode-docker-images"
 LABEL org.opencontainers.image.url="https://hub.docker.com/r/graftcode/node"
 LABEL org.opencontainers.image.vendor="grft-dev"

@@ -1,7 +1,7 @@
 FROM eclipse-temurin:21-jdk
 
-LABEL org.opencontainers.image.title="GraftCode Gateway Java"
-LABEL org.opencontainers.image.description="Java 21 image with GraftCode Gateway preinstalled"
+LABEL org.opencontainers.image.title="Graftcode Gateway Java"
+LABEL org.opencontainers.image.description="Java 21 image with Graftcode Gateway preinstalled"
 LABEL org.opencontainers.image.source="https://github.com/grft-dev/graftcode-docker-images"
 LABEL org.opencontainers.image.url="https://hub.docker.com/r/graftcode/eclipse-temurin"
 LABEL org.opencontainers.image.vendor="grft-dev"

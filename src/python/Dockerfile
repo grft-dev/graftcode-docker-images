@@ -1,7 +1,7 @@
 FROM python:3.12-slim
 
-LABEL org.opencontainers.image.title="GraftCode Gateway Python"
-LABEL org.opencontainers.image.description="Python 3.12 image with GraftCode Gateway preinstalled"
+LABEL org.opencontainers.image.title="Graftcode Gateway Python"
+LABEL org.opencontainers.image.description="Python 3.12 image with Graftcode Gateway preinstalled"
 LABEL org.opencontainers.image.source="https://github.com/grft-dev/graftcode-docker-images"
 LABEL org.opencontainers.image.url="https://hub.docker.com/r/graftcode/python"
 LABEL org.opencontainers.image.vendor="grft-dev"
