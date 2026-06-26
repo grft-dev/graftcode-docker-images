@@ -11,7 +11,7 @@ This repository provides source Dockerfiles for official Docker Hub images that 
 | Image | Base image | Docker Hub repository | Tags |
 |---|---|---|---|
 | Java | `eclipse-temurin:21-jdk` | `graftcode/eclipse-temurin` | `21-jdk`, `latest` |
-| .NET | `mcr.microsoft.com/dotnet/sdk:10.0` | `graftcode/netcore` | `10.0`, `latest` |
+| .NET | `mcr.microsoft.com/dotnet/sdk` | `graftcode/netcore` | `9.0`, `10.0`, `latest` |
 | Node.js | `node:22` | `graftcode/node` | `22`, `latest` |
 | Python | `python:3.12-slim` | `graftcode/python` | `3.12`, `latest` |
 
@@ -23,6 +23,7 @@ Use the public Docker Hub repositories and tags below:
 docker pull graftcode/eclipse-temurin:21-jdk
 docker pull graftcode/eclipse-temurin:latest
 docker pull graftcode/netcore:latest
+docker pull graftcode/netcore:9.0
 docker pull graftcode/netcore:10.0
 docker pull graftcode/node:22
 docker pull graftcode/node:latest
@@ -59,6 +60,14 @@ If you want to rebuild an image locally, run from the repository root:
 
 ```bash
 docker build -f src/java/Dockerfile -t graftcode/eclipse-temurin:21-jdk .
+docker build -f src/java/Dockerfile -t graftcode/eclipse-temurin:latest .
+docker build -f src/netcore/sdk/10.0/Dockerfile -t graftcode/netcore:10.0 .
+docker build -f src/netcore/sdk/10.0/Dockerfile -t graftcode/netcore:latest .
+docker build -f src/netcore/sdk/9.0/Dockerfile -t graftcode/netcore:9.0 .
+docker build -f src/nodejs/Dockerfile -t graftcode/node:22 .
+docker build -f src/nodejs/Dockerfile -t graftcode/node:latest .
+docker build -f src/python/Dockerfile -t graftcode/python:3.12 .
+docker build -f src/python/Dockerfile -t graftcode/python:latest .
 ```
 
 Replace the Dockerfile and tag for the image you want.
