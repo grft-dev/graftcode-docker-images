@@ -8,7 +8,7 @@ LABEL org.opencontainers.image.vendor="grft-dev"
 LABEL org.opencontainers.image.licenses="MIT"
 
 # Workaround: pin gg until latest GMA issues are fixed (see team/Dawid).
-ARG GG_VERSION=1.4.9
+ARG GG_VERSION=1.4.10
 RUN apt-get update && apt-get install -y --no-install-recommends wget ca-certificates \
     && wget -O /tmp/gg.deb \
       "https://github.com/grft-dev/graftcode-gateway/releases/download/v${GG_VERSION}/gg_linux_amd64.deb" \
