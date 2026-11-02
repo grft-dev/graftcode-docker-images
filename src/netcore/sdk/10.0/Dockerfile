@@ -7,8 +7,14 @@ LABEL org.opencontainers.image.url="https://hub.docker.com/r/graftcode/netcore"
 LABEL org.opencontainers.image.vendor="grft-dev"
 LABEL org.opencontainers.image.licenses="MIT"
 
-RUN wget -O /tmp/gg.deb \
-      https://github.com/grft-dev/graftcode-gateway/releases/latest/download/gg_linux_amd64.deb && \
+ARG GG_VERSION=
+RUN set -eux; \
+    if [ -n "${GG_VERSION}" ]; then \
+      GG_URL="https://github.com/grft-dev/graftcode-gateway/releases/download/v${GG_VERSION}/gg_linux_amd64.deb"; \
+    else \
+      GG_URL="https://github.com/grft-dev/graftcode-gateway/releases/latest/download/gg_linux_amd64.deb"; \
+    fi; \
+    wget -O /tmp/gg.deb "${GG_URL}" && \
     dpkg -i /tmp/gg.deb && \
     rm /tmp/gg.deb
 

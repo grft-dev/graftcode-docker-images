@@ -4,7 +4,15 @@ on:
   push:
     branches:
       - main
+  repository_dispatch:
+    types:
+      - gateway-release
   workflow_dispatch:
+    inputs:
+      gg_version:
+        description: Gateway version (e.g. 1.4.14 or v1.4.14). Empty = Dockerfile defaults.
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -46,6 +54,23 @@ jobs:
               graftcode/ruby:latest
 
     steps:
+      - name: Resolve Gateway version for build
+        id: gg_version
+        run: |
+          raw=""
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            raw="${{ github.event.client_payload.version }}"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            raw="${{ inputs.gg_version }}"
+          fi
+          version="${raw#v}"
+          if [ -n "${version}" ]; then
+            echo "value=${version}" >> "$GITHUB_OUTPUT"
+            echo "build_args=GG_VERSION=${version}" >> "$GITHUB_OUTPUT"
+          else
+            echo "build_args=" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Check out repository
         uses: actions/checkout@v4
 
@@ -65,3 +90,4 @@ jobs:
           file: ${{ matrix.dockerfile }}
           push: true
           tags: ${{ matrix.tags }}
+          build-args: ${{ steps.gg_version.outputs.build_args }}

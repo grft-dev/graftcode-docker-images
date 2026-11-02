@@ -12,8 +12,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-RUN wget -O /tmp/gg.deb \
-      https://github.com/grft-dev/graftcode-gateway/releases/latest/download/gg_linux_amd64.deb && \
+ARG GG_VERSION=
+RUN set -eux; \
+    if [ -n "${GG_VERSION}" ]; then \
+      GG_URL="https://github.com/grft-dev/graftcode-gateway/releases/download/v${GG_VERSION}/gg_linux_amd64.deb"; \
+    else \
+      GG_URL="https://github.com/grft-dev/graftcode-gateway/releases/latest/download/gg_linux_amd64.deb"; \
+    fi; \
+    wget -O /tmp/gg.deb "${GG_URL}" && \
     dpkg -i --force-overwrite /tmp/gg.deb && \
     rm /tmp/gg.deb
 
